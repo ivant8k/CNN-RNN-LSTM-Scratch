@@ -10,7 +10,7 @@ class Conv2DLayer:
         self.bias = weights[1]
 
         cfg = keras_layer.get_config()
-        self.strides = cfg['strides'][0]
+        self.stride = cfg['strides'][0]
         self.padding = cfg['padding']
         self.activation = cfg['activation']
 
@@ -38,11 +38,10 @@ class Conv2DLayer:
             x = np.pad(x, ((pad_h, pad_h), (pad_w, pad_w), (0, 0)), mode="constant")
             H, W = x.shape[:2]
 
-        out_H = (H - self.kH) // self.strides + 1
-        out_W = (W - self.kW) // self.strides + 1
+        out_H = (H - self.kH) // self.stride + 1
+        out_W = (W - self.kW) // self.stride + 1
         out = np.zeros((out_H, out_W, self.C_out))
 
-        # Naive approaches -> TODO: Klo ada waktu, cari optimasi lain
         for i in range(out_H):
             for j in range(out_W):
                 patch = x[i*self.stride : i * self.stride+self.kH,

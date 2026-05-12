@@ -1,5 +1,6 @@
 import numpy as np
 from src.shared.activations import Activation
+from conv2d import _get_pad, _apply_activation
 
 class LocallyConnected2DLayer:
     def __init__(self, keras_layer):
