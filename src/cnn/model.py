@@ -5,7 +5,7 @@ from cnn.layers.conv2d import Conv2DLayer
 from cnn.layers.locally_connected import LocallyConnected2DLayer
 from cnn.layers.pooling import (MaxPooling2DLayer, AveragePooling2DLayer, GlobalMaxPooling2DLayer, GlobalAveragePooling2DLayer)
 from cnn.layers.flatten import FlattenLayer
-from shared.layer import Dense
+from src.shared.layer import Dense
 
 
 class CNNModel:
