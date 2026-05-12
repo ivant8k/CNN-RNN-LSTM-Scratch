@@ -1,6 +1,6 @@
 import numpy as np
 
-class Flatten:
+class FlattenLayer:
     def forward(self, input):
         self.input_shape = input.shape
         return input.reshape(input.shape[0], -1)
