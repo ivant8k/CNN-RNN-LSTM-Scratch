@@ -3,7 +3,7 @@ from src.shared.activations import Activation
 
 class LocallyConnected2DLayer:
     def __init__(self, keras_layer):
-        # TODO: load bobot (harusnya masih sama kayak conv2d)
+        # Keras LocallyConnected2D bias shape: (out_H * out_W, C_out)
         weights = keras_layer.get_weights()
         self.kernel = weights[0]
         self.bias = weights[1]
@@ -25,8 +25,7 @@ class LocallyConnected2DLayer:
                 patch = x[i*self.stride : i * self.stride+self.kH,
                           j*self.stride : j * self.stride+self.kW, :]
                 patch_flat = patch.ravel()
-
-                out[i, j, :] = np.dot(patch_flat, self.kernel[:, pos_idx]) + self.bias
+                out[i, j, :] = np.dot(patch_flat, self.kernel[pos_idx]) + self.bias[pos_idx]
 
         return self._apply_activation(out)
 
