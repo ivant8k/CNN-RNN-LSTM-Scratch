@@ -21,18 +21,9 @@ class CNNModel:
     }
 
     def __init__(self, keras_model: tf.keras.Model):
-        """
-        Args:
-            keras_model: Model Keras yang sudah dilatih dan bobot tersimpan.
-                         Layer-layernya akan dibaca secara berurutan.
-        """
         self.layers = self._build_from_keras(keras_model)
 
     def _build_from_keras(self, keras_model):
-        """
-        Iterasi seluruh layer Keras, skip InputLayer,
-        lalu instansiasi layer from scratch yang sesuai.
-        """
         scratch_layers = []
 
         for keras_layer in keras_model.layers:
