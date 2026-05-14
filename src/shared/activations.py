@@ -38,9 +38,9 @@ class Activation:
             exp_x = np.exp(z)
             return exp_x / np.sum(exp_x)
 
-        z = x - np.max(x, axis=1, keepdims=True)
+        z = x - np.max(x, axis=-1, keepdims=True)
         exp_x = np.exp(z)
-        return exp_x / np.sum(exp_x, axis=1, keepdims=True)
+        return exp_x / np.sum(exp_x, axis=-1, keepdims=True)
 
     def softmax_derivative(self, x):
         S = self.softmax(x)
