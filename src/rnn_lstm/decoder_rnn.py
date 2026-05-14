@@ -7,7 +7,7 @@ from shared.activations import Activation
 
 class DecoderRNN:
     def __init__(
-        self, activation: Activation,
+        self,
         vocab_size: int, 
         embed_dim: int, 
         hidden_size: int, 
@@ -21,7 +21,7 @@ class DecoderRNN:
         - num_layers    : Jumlah layer RNN
         """
         self.num_layers = num_layers
-        self.activation = activation
+        self.activation = Activation()
 
         # Embedding Layer
         self.embedding = Embedding(vocab_size, embed_dim)
