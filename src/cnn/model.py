@@ -1,10 +1,10 @@
 import numpy as np
 import tensorflow as tf
 
-from cnn.layers.conv2d import Conv2DLayer
-from cnn.layers.locally_connected import LocallyConnected2DLayer
-from cnn.layers.pooling import (MaxPooling2DLayer, AveragePooling2DLayer, GlobalMaxPooling2DLayer, GlobalAveragePooling2DLayer)
-from cnn.layers.flatten import FlattenLayer
+from src.cnn.layers.conv2d import Conv2DLayer
+from src.cnn.layers.locally_connected import LocallyConnected2DLayer
+from src.cnn.layers.pooling import (MaxPooling2DLayer, AveragePooling2DLayer, GlobalMaxPooling2DLayer, GlobalAveragePooling2DLayer)
+from src.cnn.layers.flatten import FlattenLayer
 from src.shared.layer import Dense
 
 

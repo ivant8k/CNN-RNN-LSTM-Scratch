@@ -1,6 +1,5 @@
 import numpy as np
 from src.shared.activations import Activation
-from conv2d import _get_pad, _apply_activation
 
 class LocallyConnected2DLayer:
     def __init__(self, keras_layer):
@@ -30,6 +29,18 @@ class LocallyConnected2DLayer:
                 out[i, j, :] = np.dot(patch_flat, self.kernel[:, pos_idx]) + self.bias
 
         return self._apply_activation(out)
+
+    def _apply_activation(self, x):
+        if self.activation == 'relu':
+            return Activation().relu(x)
+        elif self.activation == 'sigmoid':
+            return Activation().sigmoid(x)
+        elif self.activation == 'tanh':
+            return Activation().tanh(x)
+        elif self.activation == 'softmax':
+            return Activation().softmax(x)
+        else:
+            return x
 
     # TODO: Implement backward pass (BONUS)
     def backward(self):
