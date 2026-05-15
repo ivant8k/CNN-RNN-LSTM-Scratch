@@ -2,13 +2,16 @@ import numpy as np
 from src.shared.activations import Activation
 
 class LocallyConnected2DLayer:
-    def __init__(self, keras_layer):
-        # Keras LocallyConnected2D bias shape: (out_H * out_W, C_out)
-        weights = keras_layer.get_weights()
+    def __init__(self, keras_layer=None, weights=None, config=None):
+        if keras_layer is not None:
+            weights = keras_layer.get_weights()
+            cfg = keras_layer.get_config()
+        else:
+            cfg = config
+
         self.kernel = weights[0]
         self.bias = weights[1]
 
-        cfg = keras_layer.get_config()
         self.kH, self.kW = cfg["kernel_size"]
         self.stride = cfg['strides'][0]
         self.activation = cfg['activation']
