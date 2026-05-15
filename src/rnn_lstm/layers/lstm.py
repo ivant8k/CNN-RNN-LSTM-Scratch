@@ -1,6 +1,8 @@
 import numpy as np
 from typing import List
 
+from shared.activations import Activation
+
 class LSTM:
     input_dim: int
     hidden_size: int
@@ -14,6 +16,8 @@ class LSTM:
         - input_dim     : Dimensi fitur input (embed_dim)
         - hidden_size   : Ukuran hidden state / memori sel
         """
+        self.activation = Activation()
+
         self.input_dim = input_dim
         self.hidden_size = hidden_size
         
@@ -76,10 +80,10 @@ class LSTM:
             z_o = z[:, 3*h:]    # Output gate
             
             # Activation
-            i = self._sigmoid(z_i)
-            f = self._sigmoid(z_f)
+            i = self.activation.sigmoid(z_i)
+            f = self.activation.sigmoid(z_f)
             C_tilde = np.tanh(z_c)
-            o = self._sigmoid(z_o)
+            o = self.activation.sigmoid(z_o)
             
             # Update Cell State
             C_t = f * C_t + i * C_tilde
