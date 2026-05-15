@@ -217,6 +217,8 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
+dataset/
+weights/
 data/
 tf-gpu/
 # Ini model cnn yang terbaik tpi oversize dawg
