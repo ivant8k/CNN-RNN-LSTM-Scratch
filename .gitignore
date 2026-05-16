@@ -217,4 +217,9 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
+dataset/
+weights/
 data/
+tf-gpu/
+# Ini model cnn yang terbaik tpi oversize dawg
+src/cnn/notebooks/Layer-2-32-64-5x5-maxpool.h5

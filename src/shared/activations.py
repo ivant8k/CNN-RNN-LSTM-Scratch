@@ -38,9 +38,9 @@ class Activation:
             exp_x = np.exp(z)
             return exp_x / np.sum(exp_x)
 
-        z = x - np.max(x, axis=1, keepdims=True)
+        z = x - np.max(x, axis=-1, keepdims=True)
         exp_x = np.exp(z)
-        return exp_x / np.sum(exp_x, axis=1, keepdims=True)
+        return exp_x / np.sum(exp_x, axis=-1, keepdims=True)
 
     def softmax_derivative(self, x):
         S = self.softmax(x)
@@ -54,17 +54,3 @@ class Activation:
         idx = np.arange(S.shape[1])
         jacobian[:, idx, idx] += S
         return jacobian
-
-    # leaky relu (bonus)
-    def leaky_relu(self, x, alpha=0.01):
-        return np.where(x > 0, x, alpha * x)
-
-    def leaky_relu_derivative(self, x, alpha=0.01):
-        return np.where(x>0, 1, alpha)
-
-    # softplus (bonus)
-    def softplus(self, x):
-        return np.log(1 + np.exp(x))
-
-    def softplus_derivative(self, x):
-        return self.sigmoid(x)
