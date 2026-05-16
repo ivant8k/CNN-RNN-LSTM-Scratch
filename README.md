@@ -28,8 +28,23 @@ Pastikan Anda telah menginstal **Python 3.x** di sistem Anda.
    pip install -r requirements.txt
    ```
 
-### Menjalankan Program
-Anda dapat menjalankan program langsung di notebook. Anda tinggal run-all saja atau import di environment lain seperti kaggle atau google colab.
+
+### Menjalankan Program dengan UV
+Menjalankan dengan UV
+
+Jika menggunakan tool `uv`, berikut langkah dasar menjalankannya:
+
+- Instal `uv` (opsional):
+
+   ```bash
+   pip install uv
+   ```
+
+- Sync dengan librari proyek:
+
+   ```bash
+   uv sync
+   ```
 
 
 ## Pembagian Tugas Anggota Kelompok
